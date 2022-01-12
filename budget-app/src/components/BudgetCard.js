@@ -1,15 +1,13 @@
 import { Button, Card, ProgressBar, Stack } from "react-bootstrap";
 import { currencyFormatter } from "../utils";
 
-export default function BudgetCard({ name, max, amount, blue }) {
-  const classNames = [];
-  max < amount
-    ? classNames.push("bg-danger", "bg-opacity-10")
-    : blue
-    ? classNames.push("bg-primary", "bg-opacity-10")
-    : classNames.push("bg-light");
+export default function BudgetCard({ name, max, amount, cardColor = [] }) {
+   (max < amount)
+    ? cardColor.push("bg-danger", "bg-opacity-10")
+    : cardColor.push("bg-light");
+
   return (
-    <Card className={classNames.join(" ")}>
+    <Card className={cardColor.join(" ")}>
       <Card.Body>
         <Card.Title className="d-flex justify-content-between align-items-baseline fw-normal mb-3">
           <div className="me-2"> {name} </div>
