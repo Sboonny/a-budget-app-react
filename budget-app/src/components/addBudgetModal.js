@@ -2,21 +2,20 @@ import  { useRef } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import { useBudgets } from "../contexts/BudgetContexts";
 
-export default function AddBudgetModal(show, handleClose) {
+export default function AddBudgetModal({ show, handleClose }) {
   
   const { addBudget } = useBudgets()
-  const nameReference = useRef()
-  const maxReference= useRef()
+  const nameRef = useRef()
+  const maxRef = useRef()
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault()
-    addBudget(
-    {
-      name: nameReference.current.value,
-      max: parseFloat(nameReference.current.value)
+    addBudget({
+      name: nameRef.current.value,
+      max: parseFloat(maxRef.current.value),
     })
     handleClose()
-  };
+  }
 
   return (
     <Modal show={show} onHide={handleClose}>
@@ -28,7 +27,7 @@ export default function AddBudgetModal(show, handleClose) {
           <Form.Group className="mb-3" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
-             ref={nameReference}
+             ref={nameRef}
              type="text" 
              required 
              />
@@ -36,7 +35,7 @@ export default function AddBudgetModal(show, handleClose) {
           <Form.Group className="mb-3" controlId="max">
             <Form.Label>Maximum Spending</Form.Label>
             <Form.Control
-              ref={maxReference}
+              ref={maxRef}
               type="number"
               min={0}
               step={0.01}
