@@ -1,6 +1,6 @@
 import { Button, Stack } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import addBudgetModal from "./components/addBudgetModal";
+import AddBudgetModal from "./components/AddBudgetModal";
 import BudgetCard from "./components/BudgetCard";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         <BudgetCard name='Entertainment' amount={'200'} max={'1000'}></BudgetCard>
       </div>
     </Container>
-    <addBudgetModal show />
+    <AddBudgetModal show />
     </>
   );
 }
