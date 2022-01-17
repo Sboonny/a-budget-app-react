@@ -48,7 +48,11 @@ export default function AddExpensesModal({ show, handleClose, defaultBudgetId })
             <Form.Select
               defaultValue={defaultBudgetId}
               ref={budgetIdRef}
-            />
+            >
+              {budget.map(budget => {
+                <option key={budget.id} value={budget.id}>{budget.name}</option>
+              })}
+            </Form.Select>
           </Form.Group>
           <div className="d-flex justify-content-end">
             <Button variant="primary" type="submit">
