@@ -1,9 +1,14 @@
 import { Button, Card, ProgressBar, Stack } from "react-bootstrap";
 import { currencyFormatter } from "../utils";
-const cardColor= [] 
+const cardColor = [];
 
-export default function BudgetCard({ name, max, amount, openAddExpensesClick }) {
-  (max < amount)
+export default function BudgetCard({
+  name,
+  max,
+  amount,
+  openAddExpensesClick,
+}) {
+  max < amount
     ? cardColor.push("bg-danger", "bg-opacity-10")
     : cardColor.push("bg-light");
 
@@ -12,7 +17,7 @@ export default function BudgetCard({ name, max, amount, openAddExpensesClick }) 
       <Card.Body>
         <Card.Title className="d-flex justify-content-between align-items-baseline fw-normal mb-3">
           {/* issue is in this code */}
-        <div className="me-2">{name}</div>
+          <div className="me-2">{name}</div>
           <div className="d-flex align-items-baseline">
             {currencyFormatter.format(amount)}
             {max && (
@@ -23,15 +28,21 @@ export default function BudgetCard({ name, max, amount, openAddExpensesClick }) 
           </div>
           {/* ^^^^^ */}
         </Card.Title>
-        <ProgressBar
-          className="rounded-pill"
-          variant={getProgressBarVarient(amount, max)}
-          min={0}
-          max={max}
-          now={amount}
-        />
+        {max && (
+          <ProgressBar
+            className="rounded-pill"
+            variant={getProgressBarVarient(amount, max)}
+            min={0}
+            max={max}
+            now={amount}
+          />
+        )}
         <Stack direction="horizontal" gap="2" className="mt-4">
-          <Button variant="outline-primary" className="ms-auto" onClick={openAddExpensesClick}>
+          <Button
+            variant="outline-primary"
+            className="ms-auto"
+            onClick={openAddExpensesClick}
+          >
             Add Expense
           </Button>
           <Button variant="outline-secondary">View Expense</Button>
