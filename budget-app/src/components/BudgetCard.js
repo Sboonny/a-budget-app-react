@@ -6,6 +6,7 @@ export default function BudgetCard({
   name,
   max,
   amount,
+  hideButtons,
   openAddExpensesClick,
 }) {
   max < amount
@@ -37,7 +38,7 @@ export default function BudgetCard({
             now={amount}
           />
         )}
-        <Stack direction="horizontal" gap="2" className="mt-4">
+        {!hideButtons && <Stack direction="horizontal" gap="2" className="mt-4">
           <Button
             variant="outline-primary"
             className="ms-auto"
@@ -46,7 +47,7 @@ export default function BudgetCard({
             Add Expense
           </Button>
           <Button variant="outline-secondary">View Expense</Button>
-        </Stack>
+        </Stack>}
       </Card.Body>
     </Card>
   );

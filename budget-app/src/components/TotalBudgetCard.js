@@ -11,6 +11,6 @@ export default function TotalBudgetCard() {
   const max = budgets.reduce((total, budgets) => total + budgets.max, 0);
 
   return amount === 0 ? null : (
-    <BudgetCard amount={amount} name="Total" max={max} />
+    <BudgetCard amount={amount} name="Total" max={max} hideButtons />
   );
 }
