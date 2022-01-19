@@ -55,8 +55,8 @@ function App() {
             alignItems: "flex-start",
           }}
         >
-          {budgetCard}
-          <UncategorizedBudgetCard />
+          { budgetCard }
+          <UncategorizedBudgetCard openAddExpensesClick={() => openAddExpensesModal} />
           <TotalBudgetCard />
         </div>
       </Container>
