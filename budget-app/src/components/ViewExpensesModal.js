@@ -46,7 +46,7 @@ export default function AddExpensesModal({
               <Stack direction="horizontal" gap="2" key={expense.id}>
                 <div className="me-auto fs-4">{expense.description}</div>
                 <div className="fs5">{currencyFormatter.format(expense.amount)}</div>
-                <Button size="sm" variant="outline-danger">&times;</Button>
+                <Button onClick={() => deleteExpenses(expense)} size="sm" variant="outline-danger">&times;</Button>
               </Stack>
             );
           })}
