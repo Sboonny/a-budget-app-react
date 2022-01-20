@@ -8,6 +8,7 @@ export default function BudgetCard({
   amount,
   hideButtons,
   openAddExpensesClick,
+  onViewExpensesClick,
 }) {
   max < amount
     ? cardColor.push("bg-danger", "bg-opacity-10")
@@ -38,16 +39,20 @@ export default function BudgetCard({
             now={amount}
           />
         )}
-        {!hideButtons && <Stack direction="horizontal" gap="2" className="mt-4">
-          <Button
-            variant="outline-primary"
-            className="ms-auto"
-            onClick={openAddExpensesClick}
-          >
-            Add Expense
-          </Button>
-          <Button variant="outline-secondary">View Expense</Button>
-        </Stack>}
+        {!hideButtons && (
+          <Stack direction="horizontal" gap="2" className="mt-4">
+            <Button
+              variant="outline-primary"
+              className="ms-auto"
+              onClick={openAddExpensesClick}
+            >
+              Add Expense
+            </Button>
+            <Button onClick={onViewExpensesClick} variant="outline-secondary">
+              View Expense
+            </Button>
+          </Stack>
+        )}
       </Card.Body>
     </Card>
   );
